@@ -2,14 +2,14 @@
   Main Datatype to hold information about a job, and function
   to calculate thread delay
 -}
-module Jobs
+module TinyScheduler.Jobs
   ( Job(..)
   , calculateDelay
   ) where
 
 import Control.Concurrent
 import Data.Time
-import Time
+import TinyScheduler.Time
 
 -- | Main datatype to hold job Information
 data Job a = Job

@@ -10,7 +10,7 @@
    Day x + Minute y = Day z
 
 -}
-module Time
+module TinyScheduler.Time
   ( Interval(..)
   , intervalToSecs
   ) where

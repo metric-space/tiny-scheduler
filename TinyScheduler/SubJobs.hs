@@ -1,4 +1,4 @@
-module SubJobs
+module TinyScheduler.SubJobs
   ( convertJobIntoSubJobs
   , execSubJobs
   ) where
@@ -6,7 +6,7 @@ module SubJobs
 import Control.Concurrent
 import Control.Concurrent.Async
 import Data.Time
-import Jobs
+import TinyScheduler.Jobs
 import Prelude hiding (id)
 
 data SubJob a = SubJob
