@@ -1,6 +1,6 @@
 # tiny-scheduler
 
-Utility Library to run jobs concurrently at predertmined Intervals
+Utility Library to run jobs concurrently at predetermined Intervals
 
 ## Basic Example
 

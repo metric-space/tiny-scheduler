@@ -1,7 +1,7 @@
 name:                tiny-scheduler
-version:             0.1.1.0
+version:             0.1.1.2
 synopsis:            tiny no-brainer job scheduler
-description:         this is a tiny library to make scheduling jobs to run predermined intervals easier
+description:         this is a tiny library to make scheduling jobs to run at predetermined intervals, easier
 homepage:            https://github.com/functor-soup/tiny-scheduler#readme
 license:             BSD3
 license-file:        LICENSE
