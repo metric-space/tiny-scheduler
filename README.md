@@ -8,6 +8,7 @@ Utility Library to run jobs concurrently at predetermined Intervals
 
 import TinyScheduler.Jobs
 import TinyScheduler.SubJobs
+import TinyScheduler.Time
 import Data.Time
 
 jobx :: UTCTime -> Job ()
