@@ -26,6 +26,9 @@ main = getCurrentTime >>= (\x ->
 
 ### A little more advanced Example
 
+In the following, assuming that time starts at 0, jobs are fired at 1 minute 2 seconds, 1 minutes 4 seconds,
+and 2 minutes 2 seconds and 2 minutes 4 seconds from current time
+
 ```haskell
 
 import TinyScheduler.Jobs
