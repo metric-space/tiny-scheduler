@@ -41,7 +41,7 @@ atom2 :: TimeAtom
 atom2 =  makeTimeAtom 2 (Secs 2)
 
 jobx :: UTCTime -> Job ()
-jobx x = timeAtomToJob (putStrLn "Hello") x (atom1 <> atom2)
+jobx x = timeAtomToJob 1234 (putStrLn "Hello") x (atom1 <> atom2)
 
 main :: IO ()
 main = getCurrentTime >>= (\x ->

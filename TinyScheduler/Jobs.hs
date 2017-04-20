@@ -7,6 +7,7 @@ module TinyScheduler.Jobs
   , Job(..)
   , makeTimeAtom
   , makeJob
+  , timeAtomToJob
   ) where
 
 import Data.Time
