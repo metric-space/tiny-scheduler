@@ -25,7 +25,7 @@ calculateDelay interval hits startDate currentTime =
   let intervalInSeconds = intervalToSecs interval
       delay = fromEnum $ 10 ^^ (-6) * (diffUTCTime startDate currentTime)
       interval_ = (round (intervalInSeconds * 10 ^ (6))) + delay :: Int
-  in map (interval_ *) [0 .. hits]
+  in map (interval_ *) [1 .. hits]
 
 makeTimeAtom :: Int -> Interval -> TimeAtom
 makeTimeAtom x y = TimeAtom (calculateDelay y x)
