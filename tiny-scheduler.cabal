@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      .,TinyScheduler
-  exposed-modules:     TinyScheduler.Jobs, TinyScheduler.SubJobs, TinyScheduler.Time, TinyScheduler.TimeAtom
+  exposed-modules:     TinyScheduler.Jobs, TinyScheduler.SubJobs, TinyScheduler.Time, TinyScheduler.TimeAtom, TinyScheduler.Utils
   build-depends:       base >= 4.7 && < 5, async, time
   default-language:    Haskell2010
 
