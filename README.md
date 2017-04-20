@@ -57,6 +57,12 @@ main = getCurrentTime >>= (\x ->
 
 `stack install tiny-scheduler`
 
+## pending work
+1. Tests
+2. More documentation
+3. Haddock documentation
+4. Complete the example below
+
 
 ### for a more advanced example (still in progress)
 go to  [https://github.com/functor-soup/tiny-simple-scheduler-example](https://github.com/functor-soup/tiny-simple-scheduler-example)
