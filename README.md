@@ -11,8 +11,11 @@ import TinyScheduler.SubJobs
 import TinyScheduler.Time
 import Data.Time
 
+intervalio :: Interval
+intervalio = (Minutes 1) + (Secs 20)
+
 jobx :: UTCTime -> Job ()
-jobx x = Job 1234 x (Secs 20) 4 (putStrLn "Hello")
+jobx x = makeJob 1234 4 intervalio x (putStrLn "Hello")
 
 main :: IO ()
 main = getCurrentTime >>= (\x ->
@@ -21,6 +24,31 @@ main = getCurrentTime >>= (\x ->
 
 ```
 
+### A little more advanced Example
+
+```haskell
+
+import TinyScheduler.Jobs
+import TinyScheduler.SubJobs
+import TinyScheduler.Time
+import Data.Time
+import Data.Monoid
+
+atom1 :: TimeAtom
+atom1 =  makeTimeAtom 2 (Minutes 1)
+
+atom2 :: TimeAtom
+atom2 =  makeTimeAtom 2 (Secs 2)
+
+jobx :: UTCTime -> Job ()
+jobx x = timeAtomToJob 1234 (putStrLn "Hello") x (atom1 <> atom2)
+
+main :: IO ()
+main = getCurrentTime >>= (\x ->
+      execSubJobs . convertJobIntoSubJobs x $ (jobx x)) >> 
+      return ()
+
+```
 
 # how to install
 
