@@ -64,5 +64,5 @@ main = getCurrentTime >>= (\x ->
 4. Complete the example below
 
 
-### for a more advanced example (still in progress)
+### for an application based example (still in progress)
 go to  [https://github.com/functor-soup/tiny-simple-scheduler-example](https://github.com/functor-soup/tiny-simple-scheduler-example)
