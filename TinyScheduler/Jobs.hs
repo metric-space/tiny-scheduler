@@ -3,19 +3,19 @@
   to calculate thread delay
 -}
 module TinyScheduler.Jobs
-  (
-  TimeAtom(..),
-  makeTimeAtom,
-  makeJob
+  ( TimeAtom(..)
+  , Job(..)
+  , makeTimeAtom
+  , makeJob
   ) where
 
 import Data.Time
+import Prelude hiding (id)
 import TinyScheduler.Time
 
 -- | Main datatype atom
 data TimeAtom = TimeAtom
-  {
-  , delay :: UTCTime -> UTCTime -> [Int]
+  { delay_ :: UTCTime -> UTCTime -> [Int]
   }
 
 -- | this is the thread delay, calculated as [unit: microseconds)]
@@ -27,22 +27,24 @@ calculateDelay interval hits startDate currentTime =
       interval_ = (round (intervalInSeconds * 10 ^ (6))) + delay :: Int
   in map (interval_ *) [0 .. hits]
 
-
 makeTimeAtom :: Int -> Interval -> TimeAtom
-makeTimeAtom x y  = TimeAtom (calculateDelay y z)
-
+makeTimeAtom x y = TimeAtom (calculateDelay y x)
 
 instance Monoid TimeAtom where
-  mempty = TimeAtom (\x,y -> [])
-  mappend x y = let delay = \a,b -> map (delay x a b) >>= \c -> (c+) (delay y a b)
-                 in TimeAtom delay
+  mempty = TimeAtom (\x y -> [])
+  mappend x y =
+    let delay = \a b -> ((delay_ x a b) >>= \c -> map (c +) (delay_ y a b))
+    in TimeAtom delay
 
 -- | Main datatype to hold job Information
 data Job a = Job
   { id :: Int
-    delay :: UTCTime -> [Int]
+  , delay :: UTCTime -> [Int]
   , job :: IO a
   }
 
+timeAtomToJob :: Int -> IO a -> UTCTime -> TimeAtom -> Job a
+timeAtomToJob id job start atom = Job {id = id, delay = (delay_ atom start), job = job}
+
 makeJob :: Int -> Int -> Interval -> UTCTime -> IO a -> Job a
-makeJob id hits interval startTime job = Job id (calculateDelay hits interval startTime) job
+makeJob id hits interval startTime job = Job id (calculateDelay interval hits startTime) job

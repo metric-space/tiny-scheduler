@@ -12,7 +12,7 @@ import TinyScheduler.Time
 import Data.Time
 
 jobx :: UTCTime -> Job ()
-jobx x = Job 1234 x (Secs 20) 4 (putStrLn "Hello")
+jobx x = makeJob 1234 4 (Secs 20) x (putStrLn "Hello")
 
 main :: IO ()
 main = getCurrentTime >>= (\x ->
