@@ -1,5 +1,5 @@
 name:                tiny-scheduler
-version:             0.1.4.1
+version:             0.1.4.3
 synopsis:            tiny no-brainer job scheduler
 description:         this is a tiny library to make scheduling jobs to run at predetermined intervals, easier
 homepage:            https://github.com/functor-soup/tiny-scheduler#readme
