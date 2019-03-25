@@ -27,7 +27,7 @@ makeTimeAtom x y = TimeAtom (calculateDelay y x)
 -- ..........(b)..(b)..........(b)..(b)...
 instance Monoid TimeAtom where
   mempty = TimeAtom (\x y -> [0])
-instance Semigroup TimeAtom where 
-  mappend x y =
+instance Semigroup TimeAtom where
+   x <> y =
     let delay = \a b -> ((delay_ x a b) >>= \c -> map (c +) (delay_ y a b))
     in TimeAtom delay
